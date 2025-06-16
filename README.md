@@ -1,33 +1,48 @@
-# Twitter-Trend-Analysis-on-PetualanganSherina2-
+# 🎬 Twitter Trend Analysis on #PetualanganSherina2
 
 Proyek ini mencakup dua bagian utama:
-1. Data Crawling dari Twitter menggunakan tweet-harvest
-2. Analisis Jaringan Sosial (Social Network Analysis) terhadap data tweet yang terkumpul.
 
-📁 Struktur File
-1. Crawl data twitter.ipynb: Kode untuk melakukan crawling data tweet.
-2. Analisis.ipynb: Kode untuk analisis graf sosial dari data hasil crawling.
-3. sherina.csv: Dataset hasil crawling tweet dengan kata kunci tertentu.
+1. 🐦 **Data Crawling** dari Twitter menggunakan `tweet-harvest`  
+2. 🕸️ **Analisis Jaringan Sosial** (Social Network Analysis) terhadap data tweet yang terkumpul
 
-🧾 Data Crawling
-Mengambil data tweet menggunakan keyword pencarian spesifik di sekitar Jakarta dengan batas waktu tertentu dan menyimpannya ke dalam file CSV.
+---
 
-🛠️ Dependensi
-1. tweet-harvest
-2. Node.js
-3. pandas
+## 📁 Struktur File
 
+| File                      | Deskripsi                                               |
+|---------------------------|----------------------------------------------------------|
+| `Crawl data twitter.ipynb` | Script untuk melakukan crawling data tweet               |
+| `Analisis.ipynb`           | Script untuk analisis jaringan sosial dari hasil crawling |
+| `sherina.csv`              | Dataset hasil crawling tweet dengan kata kunci tertentu  |
+
+---
+
+## 🧾 Data Crawling
+
+Mengambil tweet berdasarkan kata kunci `#PetualanganSherina2` dalam rentang waktu tertentu dan lokasi sekitar Jakarta, lalu menyimpannya dalam file CSV.
+
+### 🛠️ Dependensi
+
+- [`tweet-harvest`](https://www.npmjs.com/package/tweet-harvest)  
+- [Node.js](https://nodejs.org)  
+- `pandas` (Python)
+
+### 📦 Instalasi
+
+```bash
 # Install pandas
-!pip install pandas
+pip install pandas
 
 # Install Node.js
-!sudo apt-get update
-!sudo apt-get install -y ca-certificates curl gnupg
-!sudo mkdir -p /etc/apt/keyrings
-!curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-!NODE_MAJOR=20 && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-!sudo apt-get update
-!sudo apt-get install nodejs -y
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update
+sudo apt-get install nodejs -y
+
 
 🚀 Menjalankan Crawling
 filename = 'sherina.csv'

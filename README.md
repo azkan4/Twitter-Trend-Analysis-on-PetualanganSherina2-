@@ -1,3 +1,4 @@
+
 # 🎬 Twitter Trend Analysis on #PetualanganSherina2
 
 Proyek ini mencakup dua bagian utama:
@@ -42,41 +43,67 @@ NODE_MAJOR=20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 sudo apt-get update
 sudo apt-get install nodejs -y
+```
 
+### 🚀 Menjalankan Crawling
 
-🚀 Menjalankan Crawling
+```python
 filename = 'sherina.csv'
 search_keyword = '(#PetualanganSherina2) until:2023-10-1 since:2023-09-28 geocode:-6.19526814800593,106.82299094600958,40km'
 limit = 1000
 
-!npx --yes tweet-harvest@latest -o "{filename}" -s "{search_keyword}" -l {limit} --token ""
+!npx --yes tweet-harvest@latest -o "{filename}" -s "{search_keyword}" -l {limit} --token "YOUR_TWITTER_BEARER_TOKEN"
+```
 
-📥 Output
-1. File CSV (sherina.csv) dengan delimiter ;
-2. Berisi kolom seperti: username, full_text, favorite_count, retweet_count, dll.
+> 🔐 Ganti `YOUR_TWITTER_BEARER_TOKEN` dengan token autentikasi Twitter kamu.
 
-📊 Social Network Analysis
-Membangun dan menganalisis jaringan sosial berdasarkan hubungan antara username dan konten full_text dari tweet.
+---
+
+### 📥 Output
+
+- File `sherina.csv` dengan delimiter `;`
+- Kolom-kolom: `username`, `full_text`, `favorite_count`, `retweet_count`, `reply_count`, `quote_count`, dll.
+
+---
+
+## 📊 Social Network Analysis
+
+Analisis jaringan sosial berdasarkan hubungan antara `username` dan `full_text` dari tweet.
+
+### 🛠️ Dependensi
+
+```bash
 pip install pandas matplotlib networkx
+```
 
-🔍 Analisis yang Dilakukan
-- Jumlah Node: Berdasarkan username unik.
-- Jumlah Edge: Berdasarkan total interaksi (likes, retweet, replies, quotes).
-- Grafik Network: Dibentuk dengan koneksi antara username dan full_text.
+### 🔍 Analisis yang Dilakukan
 
-📈 Centrality
-- Menghitung Degree Centrality untuk menentukan pengaruh tiap node.
-- Menampilkan Top 10 pengguna paling berpengaruh.
-- Memvisualisasikan jaringan menggunakan spring_layout.
+- **Jumlah Node**: Berdasarkan jumlah `username` unik
+- **Jumlah Edge**: Berdasarkan total interaksi (`like`, `retweet`, `reply`, `quote`)
+- **Grafik Network**: Dibuat dari relasi antara `username` ↔ `full_text`
 
-📷 Visualisasi
-- Node diberi warna & ukuran berdasarkan tingkat centrality.
-- Label hanya muncul untuk 10 pengguna paling berpengaruh.
-- Dilengkapi color bar untuk representasi visual degree centrality.
+### 📈 Degree Centrality
 
-🧪 Contoh Output
+- Menghitung *degree centrality* untuk mengukur seberapa penting/pengaruh sebuah node
+- Menampilkan **10 pengguna paling berpengaruh**
+- Menyimpan dan menampilkan visualisasi graf
+
+### 📷 Visualisasi
+
+- Node diberi warna dan ukuran berdasarkan tingkat *degree centrality*
+- Label ditampilkan hanya untuk node (user) dengan centrality tertinggi
+- Dilengkapi *color bar* untuk representasi tingkat pengaruh
+
+---
+
+## 🧪 Contoh Output
+
+```text
 Top 10 influential users by Degree Centrality:
-User: abi234, Degree Centrality: 0.05
+User: abi234, Degree Centrality: 0.050
 User: dinaa890, Degree Centrality: 0.045
+User: raffa_999, Degree Centrality: 0.044
 ...
+```
 
+---
